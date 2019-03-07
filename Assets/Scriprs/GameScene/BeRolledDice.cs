@@ -32,14 +32,6 @@ public class BeRolledDice : MonoBehaviour
     {
         Debug.Log(statusKeeper.remainMass);
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (realDice.GetComponent<Rigidbody>() == null)
-            {
-                realDice.AddComponent<Rigidbody>();
-            }
-        }
-
         //もしダイスののy座標が1以下になったら
         if (realDice.transform.position.y < 1)
         {
@@ -52,7 +44,7 @@ public class BeRolledDice : MonoBehaviour
         }
         else
         {
-            transform.Rotate(new Vector3(45, -60, 60) * 7 * Time.deltaTime);
+            realDice.transform.Rotate(new Vector3(45, -60, 60) * 7 * Time.deltaTime);
         }
 
         if (statusKeeper.remainMass == 0)
