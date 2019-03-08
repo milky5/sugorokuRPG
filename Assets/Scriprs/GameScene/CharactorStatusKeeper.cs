@@ -11,7 +11,7 @@ public class CharactorStatusKeeper : MonoBehaviour
     public GameObject player;
     public GameObject enemy;
     public Player pplayer;
-    public int remainMass;
+    public int remainMass = int.MinValue;
     public Vector3 playerPos;
 
     private void Start()
@@ -20,6 +20,7 @@ public class CharactorStatusKeeper : MonoBehaviour
         //player = GameObject.Find("Player");
         pplayer = player.GetComponent<Player>();
         enemy = GameObject.Find("Enemy");
+        remainMass = int.MinValue;
         
     }
 

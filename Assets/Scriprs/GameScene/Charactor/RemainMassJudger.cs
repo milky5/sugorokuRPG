@@ -15,13 +15,6 @@ public class RemainMassJudger : MonoBehaviour
         var moving = other.GetComponent<IMoveable>();
         if (moving == null) return;
 
-        //現在のマスと衝突判定していたら、次マスから衝突判定させるようにする
-        //if (moving.firstMass)
-        //{
-        //    moving.firstMass = false;
-        //    return;
-        //}
-
         //進む残りマス数を更新
         rolling.remainMass--;
         Debug.Log($"残りマスが{rolling.remainMass}になりました");
@@ -41,8 +34,6 @@ public class RemainMassJudger : MonoBehaviour
             var posY = other.transform.position.y;
             var posZ = transform.position.z;
             other.transform.position = new Vector3(posX, posY, posZ);
-            //次回、現在のマスと衝突判定しないようにする
-            //moving.firstMass = true;
         }
     }
 }
