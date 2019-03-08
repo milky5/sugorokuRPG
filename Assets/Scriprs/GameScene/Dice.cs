@@ -6,10 +6,12 @@ public class Dice : MonoBehaviour
 {
     BeRolledDice beRolledDice;
     int diceNumber;
+    Rigidbody rb;
 
     private void Start()
     {
         beRolledDice = GameObject.Find("Dices").GetComponent<BeRolledDice>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -19,9 +21,9 @@ public class Dice : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (gameObject.GetComponent<Rigidbody>() == null)
+            if (rb.useGravity == false)
             {
-                gameObject.AddComponent<Rigidbody>();
+                rb.useGravity = true;
 
                 diceNumber = Random.Range(1, 7);
                 Debug.Log($"出た目は {diceNumber}");
@@ -30,6 +32,8 @@ public class Dice : MonoBehaviour
 
         if (transform.position.y < 1)
         {
+            rb.useGravity = false;
+            rb.velocity = Vector3.zero;
             beRolledDice.OnRollingExit(diceNumber);
         }
     }
