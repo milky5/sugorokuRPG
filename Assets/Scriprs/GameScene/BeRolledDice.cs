@@ -8,50 +8,35 @@ public class BeRolledDice : MonoBehaviour
     [SerializeField] GameObject realDice;
     public CharactorStatusKeeper statusKeeper;
     Vector3 dicePosition;
+    bool isOnMoveEnd;
 
-    // Start is called before the first frame update
     void Start()
     {
         statusKeeper = GameObject.Find("CharactorStatusKeeper").GetComponent<CharactorStatusKeeper>();
-        //fakeDice = GameObject.Find("fakeDice");
-        //realDice = GameObject.Find("PreDice");
-        //dicePosition = new Vector3(0, 4, 0);
-            //realDice.transform.position;
-
     }
 
-    private void Awake()
-    {
-        
-    }
-
-
-
-    // Update is called once per frame
     void Update()
     {
-        Debug.Log(statusKeeper.remainMass);
-
-        //もしダイスののy座標が1以下になったら
-        if (realDice.transform.position.y < 1)
-        {
-            int diceNumber = Random.Range(1, 7);
-            realDice.SetActive(false);
-            fakeDice.SetActive(true);
-            statusKeeper.remainMass = diceNumber;
-            Debug.Log(diceNumber);
-            statusKeeper.SetStatus();
-        }
-        else
-        {
-            realDice.transform.Rotate(new Vector3(45, -60, 60) * 7 * Time.deltaTime);
-        }
+        if (isOnMoveEnd) return;
 
         if (statusKeeper.remainMass == 0)
         {
-            fakeDice.SetActive(false);
-            //realDice.transform.position = new Vector3(statusKeeper.playerPos.x, dicePosition.y, dicePosition.z);
-            realDice.SetActive(false);
+            isOnMoveEnd = true;
+            OnMoveExit();
         }
+    }
+
+    public void OnRollingExit(int diceNumber)
+    {
+        statusKeeper.remainMass = diceNumber;
+        realDice.SetActive(false);
+        fakeDice.SetActive(true);
+        statusKeeper.SetStatus();
+        isOnMoveEnd = false;
+    }
+
+    void OnMoveExit()
+    {
+        fakeDice.SetActive(false);
     }
 }
