@@ -13,6 +13,7 @@ public class Player : Charactor, IRollable, IMoveable, IAttackable, IDamageable
     public int remainMass { get; set; }
     public bool isMoving { get; set; }
     public bool firstMass { get; set; }
+    public StoryList story { get; set; }
 
     private void Start()
     {

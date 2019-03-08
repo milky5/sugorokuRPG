@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class RemainMassJudger : MonoBehaviour
 {
+    [SerializeField] StoryList thisStory;
+
     private void OnTriggerEnter(Collider other)
     {
-
         //衝突相手がIRollableを持っていなければ何もしない
         var rolling = other.GetComponent<IRollable>();
         if (rolling == null) return;
@@ -34,6 +35,7 @@ public class RemainMassJudger : MonoBehaviour
             var posY = other.transform.position.y;
             var posZ = transform.position.z;
             other.transform.position = new Vector3(posX, posY, posZ);
+            moving.story = thisStory;
         }
     }
 }

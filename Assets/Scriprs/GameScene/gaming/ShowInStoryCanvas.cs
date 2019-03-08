@@ -45,7 +45,7 @@ public class ShowInStoryCanvas : MonoBehaviour
     {
         canvas.SetActive(true);
         imageObject.GetComponent<Image>().sprite = battle;
-        Debug.Log("ストーリーを見せます");
+        Debug.Log($"{keeper.story}を見せます");
 
 
         //isShowing = false;

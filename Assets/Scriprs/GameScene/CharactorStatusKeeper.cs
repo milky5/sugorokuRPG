@@ -13,6 +13,7 @@ public class CharactorStatusKeeper : MonoBehaviour
     public Player pplayer;
     public int remainMass = int.MinValue;
     public Vector3 playerPos;
+    public StoryList story;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class CharactorStatusKeeper : MonoBehaviour
     {
         remainMass = pplayer.remainMass;
         playerPos = player.transform.position;
+        story = pplayer.story;
     }
 
     void PlayerAttack()
