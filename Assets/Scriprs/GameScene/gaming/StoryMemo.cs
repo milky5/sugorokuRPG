@@ -7,82 +7,59 @@ class StoryMemo : MonoBehaviour
 {
     [SerializeField] Text text;
 
-
+    bool isCoroutineRunning;
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             string[] first =
             {
-            "あなた達は、とある村の仲良しグループです。",
-            "今日も仲良く遊んでいます。",
-            "しかし、ある日突然、この平和な村に異変が起きました。",
-            "なんと、モンスターが出現し、町の人を襲い始めたのです。",
-            "その異変を調べるため、あなた達は隣町に出かけることになりました。"
+            "あなた達は、とある村の仲良しグループです。\n",
+            "今日も仲良く遊んでいます。\n",
+            "しかし、ある日突然、この平和な村に異変が起きました。\n",
+            "なんと、モンスターが出現し、町の人を襲い始めたのです。\n",
+            "その異変を調べるため、" ,
+            "あなた達は隣町に出かけることになりました。\n"
             };
 
-            StartCoroutine(ShowStorys(first));
-        }
-    }
-
-    public void ShowLine(string str)
-    {
-        for (int i = 0; i < str.Length; i++)
-        {
-            if (Input.GetMouseButton(0))
+            if (!isCoroutineRunning)
             {
-                text.text += str;
-                return;
+                StartCoroutine(ShowStorys(first));
+                isCoroutineRunning = true;
             }
-            text.text += str[i];
-            Sleep(300);
-        }
-
-    }
-
-
-    public IEnumerator ShowLines(string str)
-    {
-        for (int i = 0; i < str.Length; i++)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                text.text += str;
-                break;
-            }
-            text.text += str[i];
-            yield return new WaitForSeconds(0.1f);
-        }
-        Debug.Log("表示終了");
-    }
-
-    public void ShowStory(string[] strs)
-    {
-        text.text = null;
-        foreach (var str in strs)
-        {
-            StartCoroutine(ShowLines(str));
         }
     }
+
 
     public IEnumerator ShowStorys(string[] strs)
     {
-        text.text = null;
+        int row = 0;
         foreach (var str in strs)
         {
+            if (row%3 == 0)
+            {
+                yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+                text.text = null;
+            }
+
             for (int i = 0; i < str.Length; i++)
             {
                 if (Input.GetMouseButton(0))
                 {
-                    text.text += str;
-                    yield break;
+                    text.text += str[i];
+                    yield return null;
                 }
-                text.text += str[i];
-                yield return new WaitForSeconds(0.1f);
+                else
+                {
+                    text.text += str[i];
+                    yield return new WaitForSeconds(0.1f);
+                }
             }
+            row++;
         }
-        Debug.Log("表示終了");
+        isCoroutineRunning = false;
     }
+
 
     public void StringMemo()
     {

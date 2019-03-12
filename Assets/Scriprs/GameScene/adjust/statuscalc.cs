@@ -39,7 +39,7 @@ public class statuscalc : MonoBehaviour
         float 種族値 = 60;
         float 個体値 = 0;
         float 努力値 = 0;
-        float レベル = 0;
+        //float レベル = 0;
         float HP = 0;
         float ABCDS = 0;
         int hp = 0;
