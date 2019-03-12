@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Charactor : MonoBehaviour
 {
+    public int level;
     public int hp;
     public int attackPoint;
     public int defencePoint;

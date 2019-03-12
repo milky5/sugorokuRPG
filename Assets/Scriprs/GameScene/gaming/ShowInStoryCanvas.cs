@@ -8,17 +8,18 @@ public class ShowInStoryCanvas : MonoBehaviour
 {
     CharactorStatusKeeper keeper;
     [SerializeField] GameObject canvas;
-    [SerializeField]GameObject imageObject;
-    Image image;
+    [SerializeField] GameObject imageObject;
+    [SerializeField] Image image;
     [SerializeField] Sprite battle;
     [SerializeField] Sprite help;
     bool isOnMoveEnd;
     bool isShowing;
+    [SerializeField] Text storyText;
+    StoryMemo storyMemo;
 
     private void Start()
     {
         keeper = GameObject.Find("CharactorStatusKeeper").GetComponent<CharactorStatusKeeper>();
-        image = GameObject.Find("Image").GetComponent<Image>();
     }
 
     private void Update()
@@ -47,7 +48,15 @@ public class ShowInStoryCanvas : MonoBehaviour
         imageObject.GetComponent<Image>().sprite = battle;
         Debug.Log($"{keeper.story}を見せます");
 
+        storyText.text = null;
 
         //isShowing = false;
     }
+
+
+
+
+
+
+
 }
