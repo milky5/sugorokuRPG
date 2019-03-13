@@ -1,69 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Threading.Thread;
 
-class StoryMemo : MonoBehaviour
+public class StoryMemo : MonoBehaviour
 {
-    [SerializeField] Text text;
-
-    bool isCoroutineRunning;
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            string[] first =
-            {
-            "あなた達は、とある村の仲良しグループです。\n",
-            "今日も仲良く遊んでいます。\n",
-            "しかし、ある日突然、この平和な村に異変が起きました。\n",
-            "なんと、モンスターが出現し、町の人を襲い始めたのです。\n",
-            "その異変を調べるため、" ,
-            "あなた達は隣町に出かけることになりました。\n"
-            };
-
-            if (!isCoroutineRunning)
-            {
-                StartCoroutine(ShowStorys(first));
-                isCoroutineRunning = true;
-            }
-        }
-    }
-
-
-    public IEnumerator ShowStorys(string[] strs)
-    {
-        int row = 0;
-        foreach (var str in strs)
-        {
-            if (row%3 == 0)
-            {
-                yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-                text.text = null;
-            }
-
-            for (int i = 0; i < str.Length; i++)
-            {
-                if (Input.GetMouseButton(0))
-                {
-                    text.text += str[i];
-                    yield return null;
-                }
-                else
-                {
-                    text.text += str[i];
-                    yield return new WaitForSeconds(0.1f);
-                }
-            }
-            row++;
-        }
-        isCoroutineRunning = false;
-    }
-
-
-    public void StringMemo()
-    {
-        string[] first =
+    public string[] first =
         {
             "あなた達は、とある村の仲良しグループです。",
             "今日も仲良く遊んでいます。",
@@ -71,11 +12,10 @@ class StoryMemo : MonoBehaviour
             "なんと、モンスターが出現し、町の人を襲い始めたのです。",
             "その異変を調べるため、あなた達は隣町に出かけることになりました。"
         };
-
-        string[] nexttown =
+    public string[] nexttown =
         {
             "隣町に到着しましたが、なんだか騒がしいです。",
-            "とりあえず町を歩いていると、町の人が話しかけてきました。",
+            "とりあえず町を歩いていると、町の人が話しかけてきました。" ,
             "「おや、あなた達、見ない顔だねぇ。",
             "今この町は大変なことになっているよ、早くお帰りなさい。」",
             "「…何があったかって？",
@@ -84,12 +24,13 @@ class StoryMemo : MonoBehaviour
             "「なんと！あなた達の村にもモンスターが出現したって？！",
             "異変を調べるために、この町に来たってことかい。」",
             "「そういうことなら、あそこに見える建物に行ってごらん。",
-            "他の村から来た人達と一緒に、この村の有志が作戦会議を開いているんだ。」",
+            "他の村から来た人達と一緒に、" ,
+            "この村の有志が作戦会議を開いているんだ。」",
             "「それにしても物騒だよねえ。あなた達も気を付けるんだよ。」",
             "そう言って町の人は去っていきました。"
         };
 
-        string[] inbuillding =
+    public string[] inbuillding =
         {
             "建物に入ると、中にはたくさんの人がいました。",
             "そのうちの1人…屈強そうな男がこちらを見たかと思うと、",
@@ -101,18 +42,19 @@ class StoryMemo : MonoBehaviour
             "この道具の中から一つ選んで持ってってくれ！」"
         };
 
-        string[] getitem =
+
+    public string[] geteditem =
         {
             "「全員選んだか。よし、行くぞ！」"
         };
 
-        string[] departure =
+    public string[] departure =
         {
             "「皆聞け！目的地は森の中、敵の本拠地手前だ！",
             "俺は先に行って待っている、遅れず付いてこい！」"
         };
 
-        string[] fromhere =
+    public string[] fromhere =
         {
             "「おう、着いたか。",
             "本拠地に着く前に森を抜けてしまった件だが、",
@@ -124,24 +66,24 @@ class StoryMemo : MonoBehaviour
             "揃うまで、近くで鍛錬でもしててくれ！」",
         };
 
-        string[] mid =
+    public string[] mid =
         {
             "「おう、着いたか。そういうわけだから全員揃ったら出発だ！",
             "揃うまで、近くで鍛錬でもしててくれ！」"
         };
 
-        string[] last =
+    public string[] last =
         {
-            "「おう、着いたか。全員揃ったから出発だ！"
+            "「おう、着いたか。全員揃ったから出発だ！」"
         };
 
-        string[] tovalley =
+    public string[] tovalley =
         {
             "俺は先に渓谷入り口まで行って危険がないか確認しておくぞ！",
             "くれぐれも気を付けてくるんだぞ！」"
         };
 
-        string[] tofinish =
+    public string[] tofinish =
         {
             "このあたりからは強敵ばかりだ。",
             "焦らずゆっくり進むことも、強さへの道だぞ！",
@@ -149,7 +91,7 @@ class StoryMemo : MonoBehaviour
             "健闘を祈る！"
         };
 
-        string[] meetmaou =
+    public string[] meetmaou =
         {
             "「魔王め！！！　頼もう！！！！！！」",
             "「何だ人間どもが。小賢しいのう…。",
@@ -157,7 +99,7 @@ class StoryMemo : MonoBehaviour
             "フン、かかってきやがれ！」"
         };
 
-        string[] happyend =
+    public string[] happyend =
         {
             "「うおおおおおーーーー！",
             "オレ様はこんな程度ではああアアアア…」",
@@ -165,12 +107,11 @@ class StoryMemo : MonoBehaviour
             "めでたしめでたし。」"
         };
 
-        string[] badend =
+    public string[] badend =
         {
             "「なんだこんなものか。ケッケッケ」",
             "「そして世界は魔王の手に落ちてしまいました…」"
         };
-    }
 
 
 }

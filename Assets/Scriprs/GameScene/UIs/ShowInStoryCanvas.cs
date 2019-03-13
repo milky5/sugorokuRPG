@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable 0649  
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +17,8 @@ public class ShowInStoryCanvas : MonoBehaviour
     bool isOnMoveEnd;
     bool isShowing;
     [SerializeField] Text storyText;
-    StoryMemo storyMemo;
+    [SerializeField] StoryMemo storyMemo;
+    [SerializeField] ShowTextFiled showTextFiled;
 
     private void Start()
     {
@@ -45,12 +48,17 @@ public class ShowInStoryCanvas : MonoBehaviour
     void Show()
     {
         canvas.SetActive(true);
-        imageObject.GetComponent<Image>().sprite = battle;
-        Debug.Log($"{keeper.story}を見せます");
 
-        storyText.text = null;
+        StartCoroutine(showTextFiled.ShowStorys(storyMemo.first, Hide));
 
+        //imageObject.GetComponent<Image>().sprite = battle;
+        //Debug.Log($"{keeper.story}を見せます");
         //isShowing = false;
+    }
+
+    void Hide(bool end)
+    {
+        canvas.SetActive(false);
     }
 
 

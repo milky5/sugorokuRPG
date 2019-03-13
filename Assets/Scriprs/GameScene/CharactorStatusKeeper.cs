@@ -8,18 +8,18 @@ public class CharactorStatusKeeper : MonoBehaviour
     //各プレイヤーのステータスを取ってくる
     //{ get; set;}を活用
 
-    public GameObject player;
+    public GameObject playerObj;
     public GameObject enemy;
-    public Player pplayer;
+    public Player player;
     public int remainMass = int.MinValue;
     public Vector3 playerPos;
     public StoryList story;
 
     private void Start()
     {
-        player = GameObject.Find("Eevee");
+        playerObj = GameObject.Find("Eevee");
         //player = GameObject.Find("Player");
-        pplayer = player.GetComponent<Player>();
+        player = playerObj.GetComponent<Player>();
         enemy = GameObject.Find("Enemy");
         remainMass = int.MinValue;
         
@@ -27,9 +27,9 @@ public class CharactorStatusKeeper : MonoBehaviour
 
     private void Update()
     {
-        remainMass = pplayer.remainMass;
-        playerPos = player.transform.position;
-        story = pplayer.story;
+        remainMass = player.remainMass;
+        playerPos = playerObj.transform.position;
+        story = player.story;
     }
 
     void PlayerAttack()
