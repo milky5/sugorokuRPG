@@ -21,12 +21,25 @@ public class GameUIManager : MonoBehaviour
     {
     }
 
-    //このたくさんのボタンがついたオブジェクトを表示
-    void ShowCanvas()
+    //複数のボタンを表示
+    public void ShowCanvas()
     {
-        choiceActionCanvas.SetActive(true);
+        mapButton.SetActive(true);
+        itemButton.SetActive(true);
+        diceButton.SetActive(true);
+        statusButton.SetActive(true);
+        backButton.SetActive(false);
     }
 
+    //複数のボタンを非表示
+    public void HideCanvas()
+    {
+        mapButton.SetActive(false);
+        itemButton.SetActive(false);
+        diceButton.SetActive(false);
+        statusButton.SetActive(false);
+        backButton.SetActive(false);
+    }
 
 
     public void OnBeClickedTest(GameObject clicked)

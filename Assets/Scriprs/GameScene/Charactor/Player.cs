@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Charactor, IRollable, IMoveable, IAttackable, IDamageable
 {
-    string playerName;
+    public string playerName;
     string haveitem;
     List<ItemList> items;
     int money;

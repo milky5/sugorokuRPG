@@ -272,7 +272,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85073276}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fc5f7e423b3d2e4f9b974296940cf50, type: 3}
   m_Name: 
@@ -354,6 +354,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &85578071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85578065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0d9439790cc964cb158a0105354279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keeper: {fileID: 1373717858}
 --- !u!1001 &160032658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2666,9 +2679,9 @@ GameObject:
   m_Component:
   - component: {fileID: 981428177}
   - component: {fileID: 981428176}
+  - component: {fileID: 981428174}
   - component: {fileID: 981428178}
   - component: {fileID: 981428175}
-  - component: {fileID: 981428174}
   - component: {fileID: 981428179}
   - component: {fileID: 981428180}
   m_Layer: 0
@@ -3245,7 +3258,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE\n2\u884C\u76EE2\u884C\u76EE2\u884C\u76EE2\u884C\u76EE2\u884C\u76EE2\u884C\u76EE2\u884C\u76EE2\u884C\u76EE2\u884C\u76EE2\u884C\u76EE2\u884C\u76EE\n3\u884C\u76EE3\u884C\u76EE3\u884C\u76EE3\u884C\u76EE3\u884C\u76EE3\u884C\u76EE3\u884C\u76EE3\u884C\u76EE3\u884C\u76EE3\u884C\u76EE3\u884C\u76EE"
+  m_Text: "\n\n\n1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE1\u884C\u76EE"
 --- !u!222 &1056714207
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3663,12 +3676,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b000e264685918b4d961451b7f82be5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  playerObj: {fileID: 0}
   enemy: {fileID: 0}
-  pplayer: {fileID: 0}
+  player: {fileID: 0}
   remainMass: 0
   playerPos: {x: 0, y: 0, z: 0}
   story: 0
+  isPlayerMoving: 0
 --- !u!4 &1373717859
 Transform:
   m_ObjectHideFlags: 0
@@ -4686,7 +4700,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fakeDice: {fileID: 224086549}
   realDice: {fileID: 1530493006}
-  statusKeeper: {fileID: 1373717858}
+  keeper: {fileID: 1373717858}
+  playerMover: {fileID: 85578071}
 --- !u!1 &1758954787
 GameObject:
   m_ObjectHideFlags: 0

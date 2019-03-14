@@ -18,7 +18,6 @@ public class TestInput : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            showRemainMass.TestShow();
         }
     }
 }

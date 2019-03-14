@@ -9,18 +9,17 @@ public class CharactorStatusKeeper : MonoBehaviour
     //{ get; set;}を活用
 
     public GameObject playerObj;
-    public GameObject enemy;
     public Player player;
     public int remainMass = int.MinValue;
     public Vector3 playerPos;
     public StoryList story;
+    public bool isPlayerMoving;
 
     private void Start()
     {
         playerObj = GameObject.Find("Eevee");
         //player = GameObject.Find("Player");
         player = playerObj.GetComponent<Player>();
-        enemy = GameObject.Find("Enemy");
         remainMass = int.MinValue;
         
     }
@@ -30,28 +29,21 @@ public class CharactorStatusKeeper : MonoBehaviour
         remainMass = player.remainMass;
         playerPos = playerObj.transform.position;
         story = player.story;
+        isPlayerMoving = player.isMoving;
     }
 
-    void PlayerAttack()
+    public void RenewalData(Player acPlayer,GameObject acPlayerObj)
     {
-        var players = GameObject.FindGameObjectsWithTag("Player");
-        var activePlayer = players.Where(n => n.GetComponent<Player>().isActive);
-        foreach (var ac in activePlayer)
-        {
-            ac.GetComponent<IAttackable>().Attack();
-        }
-    }
+        //データを初期化
+        playerObj = null;
+        player = null;
+        remainMass = 0;
+        playerPos = Vector3.zero;
+        story = 0;
+        isPlayerMoving = false;
 
-    public void SetStatus()
-    {
-        var players = GameObject.FindGameObjectsWithTag("Player");
-        var activePlayer = players.Where(n => n.GetComponent<Player>().isActive);
-        foreach (var ac in activePlayer)
-        {
-            var acPlayer = ac.GetComponent<Player>();
-            //acPlayer.Roll();
-            acPlayer.remainMass = this.remainMass;
-            acPlayer.Move();
-        }
+        //新規データを代入
+        playerObj = acPlayerObj;
+        player = acPlayer;
     }
 }

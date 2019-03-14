@@ -11,23 +11,28 @@ public class ShowRemainMass : MonoBehaviour
     [SerializeField] Text text;
     [SerializeField] GameObject remainMass;
     int updateRemainMass;
+    bool isActive;
 
     private void Update()
     {
+        if (isActive && !keeper.isPlayerMoving)
+        {
+            remainMass.SetActive(false);
+            isActive = false;
+        }
+
+        if (!keeper.isPlayerMoving) return;
+
+
         updateRemainMass = keeper.remainMass;
+
+        remainMass.SetActive(true);
+        isActive = true;
 
         if (updateRemainMass != 0)
         {
             text.text = $"あと {updateRemainMass}マス";
         }
-        else if (updateRemainMass == 0)
-        {
-            remainMass.SetActive(false);
-        }
-    }
 
-    public void TestShow()
-    {
-        remainMass.SetActive(true);
     }
 }

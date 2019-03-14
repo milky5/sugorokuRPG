@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum StoryList
 {  
+    nullStory = 0,
     story1 = 1,
     story2 = 2,
     story3 = 3,

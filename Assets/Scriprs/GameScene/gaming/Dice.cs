@@ -7,10 +7,12 @@ using UnityEngine.EventSystems;
 
 public class Dice : MonoBehaviour
 {
-    BeRolledDice beRolledDice;
+    [SerializeField] BeRolledDice beRolledDice;
     int diceNumber;
     Rigidbody rb;
     [SerializeField] GameObject backButton;
+    public bool isDiceBeganToFall;
+    public bool isDiceFinishedFalling;
 
     private void Start()
     {
@@ -28,6 +30,8 @@ public class Dice : MonoBehaviour
             rb.useGravity = false;
             rb.velocity = Vector3.zero;
             beRolledDice.OnRollingExit(diceNumber);
+            isDiceBeganToFall = false;
+            isDiceFinishedFalling = true;
             return;
         }
 
@@ -50,6 +54,9 @@ public class Dice : MonoBehaviour
             {
                 //サイコロを落下させる
                 rb.useGravity = true;
+
+                isDiceFinishedFalling = false;
+                isDiceBeganToFall = true;
 
                 //[戻る]ボタンをfalseに
                 backButton.SetActive(false);

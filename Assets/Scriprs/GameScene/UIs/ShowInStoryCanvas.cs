@@ -45,26 +45,18 @@ public class ShowInStoryCanvas : MonoBehaviour
         }
     }
 
-    void Show()
+    public void Show()
     {
         canvas.SetActive(true);
 
         StartCoroutine(showTextFiled.ShowStorys(storyMemo.first, Hide));
 
         //imageObject.GetComponent<Image>().sprite = battle;
-        //Debug.Log($"{keeper.story}を見せます");
-        //isShowing = false;
     }
 
-    void Hide(bool end)
+    public void Hide(bool end)
     {
         canvas.SetActive(false);
     }
-
-
-
-
-
-
 
 }

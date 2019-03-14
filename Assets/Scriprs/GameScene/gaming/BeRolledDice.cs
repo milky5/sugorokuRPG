@@ -8,14 +8,15 @@ public class BeRolledDice : MonoBehaviour
 {
     [SerializeField] GameObject fakeDice;
     [SerializeField] GameObject realDice;
-    public CharactorStatusKeeper statusKeeper;
+    [SerializeField] CharactorStatusKeeper keeper;
+    [SerializeField] PlayerMover playerMover;
     Vector3 dicePosition;
     bool isOnMoveEnd;
     float realDiceDefaltPosY = 4.0f;
 
     void Start()
     {
-        statusKeeper = GameObject.Find("CharactorStatusKeeper").GetComponent<CharactorStatusKeeper>();
+        keeper = GameObject.Find("CharactorStatusKeeper").GetComponent<CharactorStatusKeeper>();
     }
 
     void Update()
@@ -23,7 +24,7 @@ public class BeRolledDice : MonoBehaviour
 
         if (isOnMoveEnd) return;
 
-        if (statusKeeper.remainMass == 0)
+        if (keeper.remainMass == 0)
         {
             isOnMoveEnd = true;
             OnMoveExit();
@@ -32,17 +33,17 @@ public class BeRolledDice : MonoBehaviour
 
     public void OnRollingExit(int diceNumber)
     {
-        statusKeeper.remainMass = diceNumber;
+        keeper.remainMass = diceNumber;
         realDice.SetActive(false);
         fakeDice.SetActive(true);
-        statusKeeper.SetStatus();
+        playerMover.SetStatus();
         isOnMoveEnd = false;
     }
 
     void OnMoveExit()
     {
         fakeDice.SetActive(false);
-        float posX = statusKeeper.playerPos.x;
+        float posX = keeper.playerPos.x;
         float posY = transform.position.y;
         float posZ = transform.position.z;
         gameObject.transform.position = new Vector3(posX, posY, posZ);
