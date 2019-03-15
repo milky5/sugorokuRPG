@@ -15,7 +15,7 @@ public class CharactorStatusKeeper : MonoBehaviour
     public StoryList story;
     public bool isPlayerMoving;
 
-    private void Start()
+    private void Awake()
     {
         playerObj = GameObject.Find("Eevee");
         //player = GameObject.Find("Player");

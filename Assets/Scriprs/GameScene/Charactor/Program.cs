@@ -64,8 +64,8 @@ public partial class Program : MonoBehaviour
     }
 
     //CharactorStatusKeeperで保持している内容を更新する
-    void RenewalData(Player activePlayer)
+    void RenewalData()
     {
-        keeper.RenewalData(activePlayer);
+        keeper.RenewalData(activePlayer,activePlayerObj);
     }
 }

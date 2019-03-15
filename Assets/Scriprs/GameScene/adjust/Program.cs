@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable 0649 
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +15,10 @@ public　partial class Program : MonoBehaviour
     [SerializeField] Dice diceClass;
     [SerializeField] ShowRemainMass showRemainMass;
     [SerializeField] WhosTurn whosTurn;
+    [SerializeField] PlayerMover playerMover;
+    [SerializeField] BeRolledDice beRolledDice;
+
+    [SerializeField] GameObject playerPrefab;
 
     List<Player> players = new List<Player>();
     Player activePlayer;
@@ -20,10 +26,11 @@ public　partial class Program : MonoBehaviour
 
     bool isOneTurnStart;
     bool isPlayerChoicing;
-    bool isDiceBeganToFall;
-
-    bool isDiceFinishedFalling;
+    public bool isDiceBeganToFall;      //Diceクラスから代入される
+    public bool isDiceFinishedFalling;  //Diceクラスから代入される
+    bool isRemainJudging;
     bool isPlayerFinishedMoving;
+    bool isTextEndJudging;
 
     // Start is called before the first frame update
     void Start()
@@ -31,38 +38,95 @@ public　partial class Program : MonoBehaviour
         //Staticクラスから読み出す
         //Awakeのほうがいいのかも
         //というかPlayerクラスにコンストラクタ作ってほしい
-        players.Add(new Player());
-        players[0].playerName = "テストさん";
+        players.Add(keeper.player);
+        players[0].playerName = "イーブイ";
+        activePlayer = keeper.player;
+
+        isOneTurnStart = true;
+        //players.Add(Instantiate(playerPrefab).GetComponent<Player>());
+        //players[0].playerName = "テストさん";
+        //activePlayer = keeper.player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //進行状態をフラグで管理する
-        isDiceBeganToFall = diceClass.isDiceBeganToFall;
-        isDiceFinishedFalling = diceClass.isDiceFinishedFalling;
-
-        //誰かのターンが終わって誰かのターンが始まる
-        if (isOneTurnStart)
+        if (keeper.remainMass == 0 && isRemainJudging)
         {
-            TurnOrder();
-            GetActivePlayer();
-            RenewalData();
-            StartCoroutine(whosTurn.ShowWhosTurn());
+            isRemainJudging = false;
+            isPlayerFinishedMoving = true;
         }
 
-        //プレイヤーがこのターン何をするかを選択中
+        if (showInStoryCanvas.isTextEnd && isTextEndJudging)
+        {
+            isTextEndJudging = false;
+            isOneTurnStart = true;
+        }
+
+        //誰かのターンが終わって誰かのターンが始まる時
+        if (isOneTurnStart)
+        {
+            isOneTurnStart = false;
+
+            TurnOrder();
+            GetActivePlayer();
+            GetActivePlayerObj();
+            RenewalData();
+            StartCoroutine(whosTurn.ShowWhosTurn());
+
+            isPlayerChoicing = true;
+        }
+
+        //プレイヤーがこのターン何をするかを選択している時
         if (isPlayerChoicing)
         {
+            isPlayerChoicing = false;
+
             gameUIManager.ShowCanvas();
         }
 
-        // Diceクラスにて判定を実施中
-        //サイコロが落ち始めたら
+        //サイコロが落ち始めた時
         if (isDiceBeganToFall)
         {
+            isDiceBeganToFall = false;
+
             gameUIManager.HideCanvas();
         }
+
+        //サイコロの落ち終わりをフラグ管理、
+        //落ち終わり = dicePosition y <= 1
+        //落ち終わったら、出目を伝える、本物偽物を入れ替える、プレイヤーを動かす(PlayerMoverクラス)
+        if (isDiceFinishedFalling)
+        {
+            isDiceFinishedFalling = false;
+
+            //サイコロを振る
+            int diceNumber = UnityEngine.Random.Range(1, 7);
+            Debug.Log($"出た目は {diceNumber}");
+            beRolledDice.OnRollingExit(diceNumber);
+
+            beRolledDice.OnRollingExit(diceNumber);
+            playerMover.Move(activePlayer,diceNumber);
+            showRemainMass.Show();
+
+            isRemainJudging = true;
+        }
+
+        //プレイヤーの動き終わりをフラグ管理
+        //現在      //動き終わったら、(BeRolledDiceクラス)の、フェイクダイスを非表示、
+        //現在      //サイコロポジションの最適化(空のオブジェクト・リアルダイスの高さ)
+        if (isPlayerFinishedMoving)
+        {
+            isPlayerFinishedMoving = false;
+
+            beRolledDice.OnMoveExit(activePlayerObj);
+            showRemainMass.Hide();
+            showInStoryCanvas.Show();
+            isTextEndJudging = true;
+        }
+
+
+
     }
 
 

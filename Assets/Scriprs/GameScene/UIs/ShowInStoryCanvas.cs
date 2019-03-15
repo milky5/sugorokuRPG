@@ -8,55 +8,36 @@ using UnityEngine.UI;
 
 public class ShowInStoryCanvas : MonoBehaviour
 {
-    CharactorStatusKeeper keeper;
     [SerializeField] GameObject canvas;
-    [SerializeField] GameObject imageObject;
     [SerializeField] Image image;
     [SerializeField] Sprite battle;
     [SerializeField] Sprite help;
-    bool isOnMoveEnd;
-    bool isShowing;
-    [SerializeField] Text storyText;
     [SerializeField] StoryMemo storyMemo;
     [SerializeField] ShowTextFiled showTextFiled;
 
-    private void Start()
-    {
-        keeper = GameObject.Find("CharactorStatusKeeper").GetComponent<CharactorStatusKeeper>();
-    }
-
-    private void Update()
-    {
-        if (isShowing) return;
-
-        if (keeper.remainMass == 0)
-        {
-            isOnMoveEnd = true;
-        }
-        else
-        {
-            isOnMoveEnd = false;
-        }
-
-        if (isOnMoveEnd)
-        {
-            isShowing = true;
-            Show();
-        }
-    }
+    public bool isTextEnd;
 
     public void Show()
     {
         canvas.SetActive(true);
-
+        isTextEnd = false;
+        //image.sprite = battle;
         StartCoroutine(showTextFiled.ShowStorys(storyMemo.first, Hide));
-
-        //imageObject.GetComponent<Image>().sprite = battle;
     }
 
     public void Hide(bool end)
     {
         canvas.SetActive(false);
+        isTextEnd = true;
     }
 
+    //ShowInStoryCanvasからProgramにアクセスし、フラグを変更する
+    //  相互関係してしまいスパゲッティのもとになる
+
+    //ProgramのupdateでShowInstoryCanvasのフラグにアクセスする
+    //  Update重くない…？
+    //  というか、isTextEndをfalseにできないから、永遠呼ばれてしまう
+    //  isTextEndがfalseのときは、Updateでtrueになるまで監視
+    //  isTextEndがtrueになったら、isTrunBeganみたいなやつをtrueにする
+    //  isTextEnd && !isTurnBegan
 }

@@ -7,32 +7,30 @@ using UnityEngine.UI;
 
 public class ShowRemainMass : MonoBehaviour
 {
-    [SerializeField] CharactorStatusKeeper keeper;
     [SerializeField] Text text;
     [SerializeField] GameObject remainMass;
+    [SerializeField] CharactorStatusKeeper keeper;
     int updateRemainMass;
     bool isActive;
 
     private void Update()
     {
-        if (isActive && !keeper.isPlayerMoving)
-        {
-            remainMass.SetActive(false);
-            isActive = false;
-        }
+        if (!isActive) return;
 
-        if (!keeper.isPlayerMoving) return;
-
-
+        //PlayerのRemainMassを取得
         updateRemainMass = keeper.remainMass;
+        text.text = $"あと {updateRemainMass}マス";
+    }
 
+    public void Show()
+    {
         remainMass.SetActive(true);
         isActive = true;
+    }
 
-        if (updateRemainMass != 0)
-        {
-            text.text = $"あと {updateRemainMass}マス";
-        }
-
+    public void Hide()
+    {
+        remainMass.SetActive(false);
+        isActive = false;
     }
 }

@@ -7,16 +7,12 @@ using UnityEngine.EventSystems;
 
 public class Dice : MonoBehaviour
 {
-    [SerializeField] BeRolledDice beRolledDice;
+    [SerializeField] Program program;
     int diceNumber;
     Rigidbody rb;
-    [SerializeField] GameObject backButton;
-    public bool isDiceBeganToFall;
-    public bool isDiceFinishedFalling;
 
     private void Start()
     {
-        beRolledDice = GameObject.Find("Dices").GetComponent<BeRolledDice>();
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -29,9 +25,9 @@ public class Dice : MonoBehaviour
         {
             rb.useGravity = false;
             rb.velocity = Vector3.zero;
-            beRolledDice.OnRollingExit(diceNumber);
-            isDiceBeganToFall = false;
-            isDiceFinishedFalling = true;
+
+            //サイコロ落下終わったので
+            program.isDiceFinishedFalling = true;
             return;
         }
 
@@ -44,10 +40,7 @@ public class Dice : MonoBehaviour
             var result = IsUGUIHit(Input.mousePosition);
 
             //[戻る]ボタンをクリックしていた場合
-            if (result)
-            {
-                gameObject.SetActive(false);
-            }
+            if (result) gameObject.SetActive(false);
 
             //[戻る]ボタンはクリックされておらず、かつサイコロも落下していないとき
             if (!result && rb.useGravity == false)
@@ -55,15 +48,8 @@ public class Dice : MonoBehaviour
                 //サイコロを落下させる
                 rb.useGravity = true;
 
-                isDiceFinishedFalling = false;
-                isDiceBeganToFall = true;
-
-                //[戻る]ボタンをfalseに
-                backButton.SetActive(false);
-
-                //サイコロを振る
-                diceNumber = Random.Range(1, 7);
-                Debug.Log($"出た目は {diceNumber}");
+                //[戻る]ボタンを押せなくする
+                program.isDiceBeganToFall = true;
 
             }
         }
