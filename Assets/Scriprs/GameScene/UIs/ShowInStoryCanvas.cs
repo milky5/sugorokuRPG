@@ -22,7 +22,7 @@ public class ShowInStoryCanvas : MonoBehaviour
         canvas.SetActive(true);
         isTextEnd = false;
         //image.sprite = battle;
-        StartCoroutine(showTextFiled.ShowStorys(storyMemo.first, Hide));
+        StartCoroutine(showTextFiled.ShowStorys(storyMemo.preEvent1, Hide));
     }
 
     public void Hide(bool end)

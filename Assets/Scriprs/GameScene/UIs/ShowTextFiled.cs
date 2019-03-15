@@ -39,6 +39,7 @@ public class ShowTextFiled : MonoBehaviour
             row++;
         }
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        text.text = null;
         callback(true);
     }
 }

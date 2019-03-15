@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Battle" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\adjust\Battle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Program" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASGAAAACCAAAAAEAAAAEAwAhAGAECACIAACCCAAgoA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\adjust\Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="statuscalc" Collapsed="true">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAABAAAAAEAAAAEAAAQAEAAAACAABAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\adjust\statuscalc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestInput" Collapsed="true">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAEAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\adjust\TestInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraController" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\Charactor\CameraController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Charactor" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAEAQAAAAAAAQAAAAEAAQAAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\Charactor\Charactor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Status" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\Charactor\Charactor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\Charactor\Enemy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAgKEAAAAAACkIABAQAYAAAAAAAAABAAAAEAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\Charactor\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CharactorStatusKeeper" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAACAAAAAAAAAAAAEAAQAQAAAAABAAAAAAAJAEA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\CharactorStatusKeeper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BeRolledDice" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAADAAAAAAAAAAAAAgABAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\gaming\BeRolledDice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dice" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAIAE=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\gaming\Dice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RemainMassJudger" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\gaming\RemainMassJudger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticClassTest" Collapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\StaticClassTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameUIManager" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAECAAAABAAEAAABEAAQAAAEAAAEAAAAAQAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\UIs\GameUIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerGetItem" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\UIs\PlayerGetItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerMover" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\UIs\PlayerMover.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowInStoryCanvas" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAggAAAAAAAAAEAAAAAACEAhEAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\UIs\ShowInStoryCanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowRemainMass" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAAAAAAAAEAAAABABAQAEAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\UIs\ShowRemainMass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowTextFiled" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\UIs\ShowTextFiled.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoryMemo" Collapsed="true">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIEAAQAQAAAAAAkBAAQIAAAAEAAAAAQAAQAAAgA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\UIs\StoryMemo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WhosTurn" Collapsed="true">
+    <Position X="12.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAEAAAAAAAAAAAAAAAIAAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\UIs\WhosTurn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrepareEventManager" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAIAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\PrepareScene\PrepareEventManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IAttackable" Collapsed="true">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\Charactor\IAttackable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IDamageable" Collapsed="true">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\Charactor\IDamageable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IMoveable" Collapsed="true">
+    <Position X="8.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIEAAAAAAAAAAAAQAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\Charactor\IMoveable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IRollable" Collapsed="true">
+    <Position X="10.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\Charactor\IRollable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ItemList" Collapsed="true">
+    <Position X="5.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgEAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\Charactor\ItemList.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="StoryList" Collapsed="true">
+    <Position X="7" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriprs\GameScene\UIs\StoryList.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Yu Gothic UI" Size="9" />
+</ClassDiagram>

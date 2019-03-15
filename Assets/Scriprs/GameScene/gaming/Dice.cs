@@ -8,7 +8,6 @@ using UnityEngine.EventSystems;
 public class Dice : MonoBehaviour
 {
     [SerializeField] Program program;
-    int diceNumber;
     Rigidbody rb;
 
     private void Start()
