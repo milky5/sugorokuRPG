@@ -4,15 +4,15 @@ using UnityEngine;
 
 public static class StaticClassTest 
 {
-    public static List<Player> players = new List<Player>();
+    static string[] names;
 
-    static void TakeData()
+    public static void TakeData(List<string> names)
     {
-
+        StaticClassTest.names = names.ToArray();
     }
 
-    static void GiveData()
+    public static string[] GiveData()
     {
-
+        return names;
     }
 }

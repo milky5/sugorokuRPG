@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PrepareEventManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PrepareEventManager : MonoBehaviour
     [SerializeField] GameObject no2;
     [SerializeField] GameObject no3;
     [SerializeField] GameObject no4;
+    [SerializeField] InputField[] inputFields;
 
 
     //StartButtonが押されたら呼ばれるメソッド
@@ -63,7 +65,17 @@ public class PrepareEventManager : MonoBehaviour
     //GOButtonが押されたら呼ばれるメソッド
     public void OnGOButtonDown()
     {
-        //staticクラスに何人でプレイするのかと名前を渡し、
-        //GameSceneを読み込み
+        var numberOfPlayer = dropdown.value;
+        numberOfPlayer++;
+        var playersName = new List<string>();
+
+        for (int i = 0; i < numberOfPlayer; i++)
+        {
+            playersName.Add(inputFields[i].text);
+        }
+
+        StaticClassTest.TakeData(playersName);
+
+        SceneManager.LoadScene("Game");
     }
 }
