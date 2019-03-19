@@ -12,11 +12,11 @@ public class WhosTurn : MonoBehaviour
     [SerializeField] float activeTime;
 
     //「○○のターン！」というイメージを表示し非表示にする
-    public IEnumerator ShowWhosTurn()
+    public IEnumerator ShowWhosTurn(Player activePlayer)
     {
         //呼出元に　StartCoroutine(ShowWhosTurn());
         whosTurn.SetActive(true);
-        text.text = "nameの番！";
+        text.text = $"{activePlayer.name}の番！";
         yield return new WaitForSeconds(activeTime);
         whosTurn.SetActive(false);
     }

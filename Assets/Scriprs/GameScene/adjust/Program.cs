@@ -72,7 +72,7 @@ public　partial class Program : MonoBehaviour
             GetActivePlayer();
             GetActivePlayerObj();
             RenewalData();
-            StartCoroutine(whosTurn.ShowWhosTurn());
+            StartCoroutine(whosTurn.ShowWhosTurn(activePlayer));
 
             isPlayerChoicing = true;
         }
@@ -154,7 +154,7 @@ public　partial class Program : MonoBehaviour
         }
 
         //○○のターン！というイメージを表示
-        StartCoroutine(whosTurn.ShowWhosTurn());
+        StartCoroutine(whosTurn.ShowWhosTurn(activePlayer));
 
         //[マップ][サイコロ][アイテム][ステータス]のボタンを表示する
         gameUIManager.ShowCanvas();
