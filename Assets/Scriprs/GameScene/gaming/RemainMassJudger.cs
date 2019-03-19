@@ -30,6 +30,9 @@ public class RemainMassJudger : MonoBehaviour
         //残りマスが0だったら
         else
         {
+            //このマスのストーリーを教える
+            moving.story = thisStory;
+
             //これ以上動かないようにする
             moving.isMoving = false;
             //マス中央にキャラクターを動かす
@@ -37,7 +40,6 @@ public class RemainMassJudger : MonoBehaviour
             var posY = other.transform.position.y;
             var posZ = transform.position.z;
             other.transform.position = new Vector3(posX, posY, posZ);
-            moving.story = thisStory;
         }
     }
 }

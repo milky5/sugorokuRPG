@@ -17,12 +17,14 @@ public class ShowInStoryCanvas : MonoBehaviour
 
     public bool isTextEnd;
 
-    public void Show()
+    public void Show(StoryList story)
     {
         canvas.SetActive(true);
         isTextEnd = false;
         //image.sprite = battle;
-        StartCoroutine(showTextFiled.ShowStorys(storyMemo.preEvent1, Hide));
+        StoryContents storyContents = new StoryContents();
+        var storyStr = storyContents.ReturnContents(story);
+        StartCoroutine(showTextFiled.ShowStorys(storyStr, Hide));
     }
 
     public void Hide(bool end)

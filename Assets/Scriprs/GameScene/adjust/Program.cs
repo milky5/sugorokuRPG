@@ -24,6 +24,8 @@ public　partial class Program : MonoBehaviour
     Player activePlayer;
     GameObject activePlayerObj;
 
+    StoryList story;
+
     bool isOneTurnStart;
     bool isPlayerChoicing;
     public bool isDiceBeganToFall;      //Diceクラスから代入される
@@ -55,6 +57,7 @@ public　partial class Program : MonoBehaviour
         {
             isRemainJudging = false;
             isPlayerFinishedMoving = true;
+            story = keeper.story;
         }
 
         if (showInStoryCanvas.isTextEnd && isTextEndJudging)
@@ -121,7 +124,7 @@ public　partial class Program : MonoBehaviour
 
             beRolledDice.OnMoveExit(activePlayerObj);
             showRemainMass.Hide();
-            showInStoryCanvas.Show();
+            showInStoryCanvas.Show(story);
             isTextEndJudging = true;
         }
 
@@ -186,7 +189,7 @@ public　partial class Program : MonoBehaviour
 
         //動き終わったら、showRemainMassを非アクティブに。
         //動き終わったら、StoryCanvasをactiveに
-        showInStoryCanvas.Show();
+        showInStoryCanvas.Show(story);
         //文章を読み終わったら、Storycanvasをfalseに
         showInStoryCanvas.Hide(true);
     }
