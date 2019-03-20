@@ -20,11 +20,16 @@ public　partial class Program : MonoBehaviour
 
     [SerializeField] GameObject playerPrefab;
 
+
+    [SerializeField] GameObject[] playerPrefabs;
     List<Player> players = new List<Player>();
+
     Player activePlayer;
     GameObject activePlayerObj;
 
     StoryList story;
+
+    bool isFirstTurn;
 
     bool isOneTurnStart;
     bool isPlayerChoicing;
@@ -34,21 +39,39 @@ public　partial class Program : MonoBehaviour
     bool isPlayerFinishedMoving;
     bool isTextEndJudging;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        //Staticクラスから読み出す
-        //Awakeのほうがいいのかも
-        //というかPlayerクラスにコンストラクタ作ってほしい
-        players.Add(keeper.player);
-        players[0].playerName = "イーブイ";
-        activePlayer = keeper.player;
+        var names = DebugStaticClass.GiveData();
 
+        for (int i = 0; i < names.Length; i++)
+        {
+            var obj = Instantiate(playerPrefabs[i]);
+            //var playerComponent = obj.AddComponent<Player>();
+            var playerComponent = obj.GetComponent<Player>();
+            playerComponent.playerName = names[i];
+            players.Add(playerComponent);
+        }
+
+        players[0].isActive = true;
+        isFirstTurn = true;
         isOneTurnStart = true;
-        //players.Add(Instantiate(playerPrefab).GetComponent<Player>());
-        //players[0].playerName = "テストさん";
-        //activePlayer = keeper.player;
     }
+
+    // Start is called before the first frame update
+    //void Start()
+    //{
+    //    //Staticクラスから読み出す
+    //    //Awakeのほうがいいのかも
+    //    //というかPlayerクラスにコンストラクタ作ってほしい
+    //    players.Add(keeper.player);
+    //    players[0].playerName = "イーブイ";
+    //    activePlayer = keeper.player;
+
+    //    isOneTurnStart = true;
+    //    //players.Add(Instantiate(playerPrefab).GetComponent<Player>());
+    //    //players[0].playerName = "テストさん";
+    //    //activePlayer = keeper.player;
+    //}
 
     // Update is called once per frame
     void Update()
@@ -71,7 +94,12 @@ public　partial class Program : MonoBehaviour
         {
             isOneTurnStart = false;
 
-            TurnOrder();
+            if (!isFirstTurn)
+            {
+                TurnOrder();
+            }
+            isFirstTurn = false;
+
             GetActivePlayer();
             GetActivePlayerObj();
             RenewalData();

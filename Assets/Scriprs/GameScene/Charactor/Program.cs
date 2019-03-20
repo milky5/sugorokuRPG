@@ -60,6 +60,11 @@ public partial class Program : MonoBehaviour
         else
         {
             Debug.Log("ActivePlayerが2人以上います");
+
+            foreach (var ac in activePlayerObj)
+            {
+                Debug.Log(ac.GetComponent<Player>().playerName.ToString());
+            }
         }
     }
 

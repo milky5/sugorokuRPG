@@ -17,10 +17,10 @@ public class CharactorStatusKeeper : MonoBehaviour
 
     private void Awake()
     {
-        playerObj = GameObject.Find("Eevee");
-        //player = GameObject.Find("Player");
-        player = playerObj.GetComponent<Player>();
-        remainMass = int.MinValue;
+        //playerObj = GameObject.Find("Eevee");
+        ////player = GameObject.Find("Player");
+        //player = playerObj.GetComponent<Player>();
+        //remainMass = int.MinValue;
         
     }
 

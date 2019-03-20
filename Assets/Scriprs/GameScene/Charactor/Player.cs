@@ -9,7 +9,7 @@ public class Player : Charactor, IRollable, IMoveable, IAttackable, IDamageable
     List<ItemList> items;
     int money;
 
-    public bool isActive = true;
+    public bool isActive;
     public int remainMass { get; set; }
     public bool isMoving { get; set; }
     public bool firstMass { get; set; }
