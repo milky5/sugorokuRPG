@@ -41,7 +41,9 @@ public　partial class Program : MonoBehaviour
 
     private void Awake()
     {
-        var names = DebugStaticClass.GiveData();
+        //
+        //var names = DebugStaticClass.GiveData();
+        var names = StaticClassTest.GiveData();
 
         for (int i = 0; i < names.Length; i++)
         {
