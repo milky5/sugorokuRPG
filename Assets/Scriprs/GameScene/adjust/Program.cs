@@ -105,6 +105,8 @@ public　partial class Program : MonoBehaviour
             RenewalData();
             StartCoroutine(whosTurn.ShowWhosTurn(activePlayer));
 
+            beRolledDice.OnActivePlayerChanged(activePlayerObj);
+
             isPlayerChoicing = true;
         }
 
@@ -150,7 +152,7 @@ public　partial class Program : MonoBehaviour
         {
             isPlayerFinishedMoving = false;
 
-            beRolledDice.OnMoveExit(activePlayerObj);
+            beRolledDice.OnMoveExit();
             showRemainMass.Hide();
             showInStoryCanvas.Show(story);
             isTextEndJudging = true;

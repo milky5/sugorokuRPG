@@ -18,9 +18,13 @@ public class BeRolledDice : MonoBehaviour
         fakeDice.SetActive(true);
     }
 
-    public void OnMoveExit(GameObject playerObj)
+    public void OnMoveExit()
     {
         fakeDice.SetActive(false);
+    }
+
+    public void OnActivePlayerChanged(GameObject playerObj)
+    {
         float posX = playerObj.transform.position.x;
         float posY = transform.position.y;
         float posZ = transform.position.z;
