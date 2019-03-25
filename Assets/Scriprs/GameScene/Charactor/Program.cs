@@ -17,6 +17,10 @@ public partial class Program : MonoBehaviour
             {
                 //今のプレイヤーをアクティブプレイヤーから外す
                 players[i].isActive = false;
+
+                /* 一時しのぎ　　今のプレイヤーのコライダーを非アクティブにする */
+                players[i].GetComponent<Collider>().enabled = false;
+
                 //次のプレイヤーのインデックスを保持
                 nextIndex = ++i;
                 //アクティブプレイヤーは1人しかいないのでこれ以上探す必要はない
@@ -31,6 +35,8 @@ public partial class Program : MonoBehaviour
         }
         //次のプレイヤーをアクティブプレイヤーにする
         players[nextIndex].isActive = true;
+        /* 一時しのぎ　　次のプレイヤーのコライダーをアクティブにする */
+        players[nextIndex].GetComponent<Collider>().enabled = true;
     }
 
     //アクティブプレイヤーを取得
