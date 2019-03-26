@@ -16,7 +16,7 @@ public class WhosTurn : MonoBehaviour
     {
         //呼出元に　StartCoroutine(ShowWhosTurn());
         whosTurn.SetActive(true);
-        text.text = $"{activePlayer.playerName}の番！";
+        text.text = $"{activePlayer.charactorName}の番！";
         yield return new WaitForSeconds(activeTime);
         whosTurn.SetActive(false);
     }

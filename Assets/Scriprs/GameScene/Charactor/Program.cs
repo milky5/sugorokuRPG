@@ -69,7 +69,7 @@ public partial class Program : MonoBehaviour
 
             foreach (var ac in activePlayerObj)
             {
-                Debug.Log(ac.GetComponent<Player>().playerName.ToString());
+                Debug.Log(ac.GetComponent<Player>().charactorName.ToString());
             }
         }
     }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Charactor, IRollable, IMoveable, IAttackable, IDamageable
+public class Player : Charactor, IRollable, IMoveable, IBattleable
 {
-    public string playerName;
+    //public string playerName;
     string haveitem;
     List<ItemList> items;
     int money;
@@ -14,6 +14,14 @@ public class Player : Charactor, IRollable, IMoveable, IAttackable, IDamageable
     public bool isMoving { get; set; }
     public bool firstMass { get; set; }
     public StoryList story { get; set; }
+
+    public int level { get; set; }
+    public int hp { get; set; }
+    public int attackPoint { get; set; }
+    public int defencePoint { get; set; }
+    public int magicAttackPoint { get; set; }
+    public int magicDefencePoint { get; set; }
+    public int speed { get; set; }
 
     private void Start()
     {
@@ -36,12 +44,14 @@ public class Player : Charactor, IRollable, IMoveable, IAttackable, IDamageable
 
     public void Attack()
     {
-        Debug.Log($"{name}の攻撃");
+        Debug.Log($"{charactorName}の攻撃");
     }
 
-    public void BeDamaged()
+    public void BeDamaged(int damagePoint)
     {
-        Debug.Log($"{name}のHPが{hp}になった。");
+        Debug.Log($"{charactorName}に{damagePoint}のダメージ");
+        hp -= damagePoint;
+        Debug.Log($"{charactorName}のHPが{hp}になった。");
     }
 
     public void Move()
@@ -56,48 +66,3 @@ public class Player : Charactor, IRollable, IMoveable, IAttackable, IDamageable
         Debug.Log($"出目は{remainMass}");
     }
 }
-
-//ダミークラス
-//class Singleton
-//{
-//    public int NumberOfParticipant { get; set; }
-//    public List<string> playersName { get; set; }
-//    public Singleton instance { get; set; }
-
-//    Singleton()
-//    {
-//    }
-
-//    public static Singleton Instance()
-//    {
-//        if (instance == null)
-//        {
-//            instance = new Singleton();
-//        }
-//        return instance;
-//    }
-//}
-////ダミークラス
-//class Program
-//{
-//    int numberOfP;
-//    List<Player> players = new List<Player>();
-//    List<string> playersName;
-
-//    void Main()
-//    {
-//        Singleton s1 = Singleton.Instance();
-
-//        numberOfP = s1.NumberOfParticipant;
-//        playersName = s1.playersName;
-
-//        for (int i = 0; i < numberOfP; i++)
-//        {
-//            players.Add(new Player(playersName[i]));
-//        }
-//        if (numberOfP != players.Count)
-//        {
-//            Debug.Log("参加人数とプレイヤーの数があっていません");
-//        }
-//    }
-//}

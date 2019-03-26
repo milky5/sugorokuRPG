@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class statuscalc : MonoBehaviour
+public class statuscalc
 {
-    float syuzokuchi = 60.0f;
-    float level;
+    float playerSyuzokuchi = 60.0f;
+    //float level;
     float HP;
     float ABCDS;
     int hp;
@@ -15,24 +15,68 @@ public class statuscalc : MonoBehaviour
     //プレイヤー　エネミー　魔王
     //種族値やレベルが変わる
 
-    public (int,int) CalcStatus(int level)
+    public (int, int) PlayerCalcStatus(int level)
     {
-        HP = this.syuzokuchi * 2.0f * (level / 100.0f) + (10.0f + level);
+        HP = playerSyuzokuchi * 2.0f * (level / 100.0f) + (10.0f + level);
         hp = (int)HP;
-        ABCDS = this.syuzokuchi * 2.0f * (level / 100.0f) + 5.0f;
-        abcds = (int)ABCDS;
-        return (hp,abcds);
-    }
-
-    public (int, int) CalcStatus(int level,int syuzokuti)
-    {
-        HP = syuzokuchi * 2.0f * (level / 100.0f) + (10.0f + level);
-        hp = (int)HP;
-        ABCDS = syuzokuchi * 2.0f * (level / 100.0f) + 5.0f;
+        ABCDS = playerSyuzokuchi * 2.0f * (level / 100.0f) + 5.0f;
         abcds = (int)ABCDS;
         return (hp, abcds);
     }
 
+    public (int, int) EnemyCalcStatus(int level, int syuzokuti)
+    {
+        HP = syuzokuti * 2.0f * (level / 100.0f) + (10.0f + level);
+        hp = (int)HP;
+        ABCDS = syuzokuti * 2.0f * (level / 100.0f) + 5.0f;
+        abcds = (int)ABCDS;
+        return (hp, abcds);
+    }
+
+    /// <summary>
+    /// <param name="attacker">IAttackable</param>
+    /// <param name="defencer">IDefenceable</param>
+    /// </summary>
+    /// <returns></returns>
+    public int DamagePointCalc(IBattleable attacker, IBattleable defencer)
+    {
+        int iryoku = 50;
+        float ransu = DamageRatioCalc();
+
+        var damagePoint = ((attacker.level * 2 / 5 + 2) * (iryoku * attacker.attackPoint / defencer.defencePoint) / 50 + 2) * ransu;
+
+        return (int)damagePoint;
+    }
+
+    public float DamageRatioCalc()
+    {
+        int ransu = Random.Range(0, 100);
+
+        float ratio = 1.0f;
+
+        if (0 <= ransu && ransu < 8)
+        {
+            ratio = 1.2f;
+        }
+        else if (8 <= ransu && ransu < 25)
+        {
+            ratio = 1.1f;
+        }
+        else if (25 <= ransu && ransu < 75)
+        {
+            ratio = 1.0f;
+        }
+        else if (75 <= ransu && ransu < 92)
+        {
+            ratio = 0.9f;
+        }
+        else if (92 <= ransu && ransu < 100)
+        {
+            ratio = 0.8f;
+        }
+
+        return ratio;
+    }
 
     void Memo()
     {

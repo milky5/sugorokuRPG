@@ -50,7 +50,7 @@ public　partial class Program : MonoBehaviour
             var obj = Instantiate(playerPrefabs[i]);
             //var playerComponent = obj.AddComponent<Player>();
             var playerComponent = obj.GetComponent<Player>();
-            playerComponent.playerName = names[i];
+            playerComponent.charactorName = names[i];
             players.Add(playerComponent);
         }
 
