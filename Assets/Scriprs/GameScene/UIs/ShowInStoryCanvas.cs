@@ -14,11 +14,19 @@ public class ShowInStoryCanvas : MonoBehaviour
     [SerializeField] Sprite help;
     [SerializeField] StoryMemo storyMemo;
     [SerializeField] ShowTextFiled showTextFiled;
+    [SerializeField] ShowInBattleCanvas showInBattleCanvas;
 
     public bool isTextEnd;
 
     public void Show(StoryList story)
     {
+        if (story == StoryList.battle)
+        {
+            //他のところに行く
+            //showInBattleCanvas.Show();
+            return;
+        }
+
         canvas.SetActive(true);
         isTextEnd = false;
         //image.sprite = battle;
@@ -33,13 +41,4 @@ public class ShowInStoryCanvas : MonoBehaviour
         isTextEnd = true;
     }
 
-    //ShowInStoryCanvasからProgramにアクセスし、フラグを変更する
-    //  相互関係してしまいスパゲッティのもとになる
-
-    //ProgramのupdateでShowInstoryCanvasのフラグにアクセスする
-    //  Update重くない…？
-    //  というか、isTextEndをfalseにできないから、永遠呼ばれてしまう
-    //  isTextEndがfalseのときは、Updateでtrueになるまで監視
-    //  isTextEndがtrueになったら、isTrunBeganみたいなやつをtrueにする
-    //  isTextEnd && !isTurnBegan
 }

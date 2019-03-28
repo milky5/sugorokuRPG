@@ -17,15 +17,17 @@ public class Enemy : Charactor, IBattleable
         charactorName = "敵";
     }
 
-    public void Attack()
+    public string Attack()
     {
-        Debug.Log("敵の攻撃！");
+        return "敵の攻撃！";
     }
 
-    public void BeDamaged(int damagePoint)
+    public string[] BeDamaged(int damagePoint)
     {
-        Debug.Log($"敵に{damagePoint}のダメージ");
+        var returnList = new List<string>();
+        returnList.Add($"敵に{damagePoint}のダメージ");
         hp -= damagePoint;
-        Debug.Log($"敵のHPが{hp}になった。");
+        returnList.Add($"敵のHPが{hp}になった。");
+        return returnList.ToArray();
     }
 }

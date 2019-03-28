@@ -5,10 +5,11 @@ using UnityEngine;
 public enum StoryList
 {
     nullStory = 0,
-    story1 = 1,
-    story2 = 2,
-    story3 = 3,
-    story4 = 4
+    story1,
+    story2,
+    story3,
+    story4,
+    battle
 }
 
 
@@ -57,6 +58,14 @@ public class StoryContents
                     "あなたはモンスターを退治しました。"
                 };
                 return preEvent4;
+
+            case StoryList.battle:
+                //メソッドを呼ぶ
+                string[] preBattle =
+                {
+                    "バトルしました"
+                };
+                return preBattle;
 
             default:
                 string[] tempo = { "ぬるぬる" };

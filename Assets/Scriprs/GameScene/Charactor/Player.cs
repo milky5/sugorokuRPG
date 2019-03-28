@@ -42,16 +42,18 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
         }
     }
 
-    public void Attack()
+    public string Attack()
     {
-        Debug.Log($"{charactorName}の攻撃");
+        return $"{charactorName}の攻撃";
     }
 
-    public void BeDamaged(int damagePoint)
+    public string[] BeDamaged(int damagePoint)
     {
-        Debug.Log($"{charactorName}に{damagePoint}のダメージ");
+        var returnList = new List<string>();
+        returnList.Add($"{charactorName}に{damagePoint}のダメージ");
         hp -= damagePoint;
-        Debug.Log($"{charactorName}のHPが{hp}になった。");
+        returnList.Add($"{charactorName}のHPが{hp}になった。");
+        return returnList.ToArray();
     }
 
     public void Move()
