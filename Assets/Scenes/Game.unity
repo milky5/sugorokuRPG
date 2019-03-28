@@ -2190,8 +2190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128e0dcfb471ca1458779dc1e4c8fadb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showTextFiledTest: {fileID: 607422158}
+  showTextFiled: {fileID: 981428175}
   buttons: {fileID: 985031210}
+  battleCanvas: {fileID: 1062811261}
+  text: {fileID: 112367268}
 --- !u!4 &607422157
 Transform:
   m_ObjectHideFlags: 0

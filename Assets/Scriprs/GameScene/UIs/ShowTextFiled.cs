@@ -9,6 +9,7 @@ using UnityEngine.Events;
 public class ShowTextFiled : MonoBehaviour
 {
     [SerializeField] Text text;
+    bool isCoroutineEnd;
 
     public IEnumerator ShowStorys(string[] strs ,UnityAction<bool> callback)
     {
@@ -41,5 +42,21 @@ public class ShowTextFiled : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         text.text = null;
         callback(true);
+    }
+
+    public IEnumerator ShowStorys(string[] strs, UnityAction<bool> callback,Text selectedText)
+    {
+        Text tempText = this.text;
+        this.text = selectedText;
+        StartCoroutine(ShowStorys(strs, CoroutineEnd));
+        yield return new WaitUntil(() => isCoroutineEnd);
+        isCoroutineEnd = false;
+        this.text = tempText;
+        callback(true);
+    }
+
+    void CoroutineEnd(bool ended)
+    {
+        isCoroutineEnd = ended;
     }
 }
