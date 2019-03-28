@@ -48,12 +48,11 @@ public class InBattle : MonoBehaviour
         //攻撃する・防御する　をやる
         //どちらかが倒れるまで繰り返す
         StartCoroutine(Fighting());
-        Debug.Log("ボタンがクリックされた");
+        buttons.SetActive(false);
     }
 
     public IEnumerator Fighting()
     {
-        while (true)
         {
             Debug.Log("コルーチン開始");
             //早いほうに攻撃させ、遅いほうに防御させる
@@ -66,7 +65,7 @@ public class InBattle : MonoBehaviour
             //文字表示終了待ち
             yield return new WaitUntil(() => !isTextCoroutineRunning);
             //もし戦闘が終わっているのならループ終了
-            if (isEnd) break;
+            if (isEnd) Hide();
 
             //遅いほうに攻撃させ、早いほうに防御させる
             //バトル結果の文字列と、終了のフラグを受け取る
@@ -78,16 +77,16 @@ public class InBattle : MonoBehaviour
             //文字表示終了待ち
             yield return new WaitUntil(() => !isTextCoroutineRunning);
             //もし戦闘が終わっているのならループ終了
-            if (isEnd) break;
+            if (isEnd) Hide();
         }
-        Hide();
+        text.text = "どうしますか？";
+        buttons.SetActive(true);
     }
 
 
     void Hide()
     {
         battleCanvas.SetActive(false);
-        Debug.Log("終了");
     }
 
     void JugdeIsCoroutineFinish(bool finish)
@@ -101,40 +100,6 @@ public class InBattle : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-    public void Test()
-    {
-        SetStatus();
-        Sort();
-        //[攻撃][魔法攻撃]がクリックされたら、どっちがクリックされたのか保持
-        /*
-        While的な
-        OnMouseButtonDown
-        攻撃　→　文字表示コルーチン
-        防御　→　文字表示コルーチン
-        OnMouseButtonDown
-        攻撃　→　文字表示コルーチン
-        防御　→　文字表示コルーチン
-        OnMouseButtonDown
-        攻撃　→　文字表示コルーチン
-        防御　→　文字表示コルーチン
-        break
-
-        if(isEnd)
-        いつもの文字表示コルーチン
-        break;
-        if(!isEnd)
-        専用の文字表示コルーチン
-        */
-
-    }
 
     //Debug用　ステータスをセットする
     //本番では、ステータスを取ってくる
