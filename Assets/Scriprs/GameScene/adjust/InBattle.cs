@@ -16,6 +16,98 @@ public class InBattle : MonoBehaviour
     List<IBattleable> battlers = new List<IBattleable>();
     bool isTextCoroutineRunning;
 
+
+
+
+
+    private void Start()
+    {
+        OnBattleStart();
+    }
+
+    public void OnBattleStart()
+    {
+        text.text = "敵が現れた。\nどうしますか？";
+
+        SetStatus();
+        Sort();
+
+        buttons.SetActive(true);
+    }
+
+    public void OnAttackButtonsClicked(GameObject clicked)
+    {
+        //if (clicked.CompareTag("nomal"))
+        //{
+
+        //}
+        //else if (clicked.CompareTag("magic"))
+        //{
+
+        //}
+        //攻撃する・防御する　をやる
+        //どちらかが倒れるまで繰り返す
+        StartCoroutine(Fighting());
+    }
+
+    public IEnumerator Fighting()
+    {
+        while (true)
+        {
+            //早いほうに攻撃させ、遅いほうに防御させる
+            //バトル結果の文字列と、終了のフラグを受け取る
+            (var battleStr, var isEnd) = Direct(battlers[0], battlers[1]);
+            //文字を画面に出力
+            isTextCoroutineRunning = true;
+            var battleStrArray = battleStr.ToArray();
+            StartCoroutine(showTextFiled.ShowStorys(battleStrArray, JugdeIsCoroutineFinish,text));
+            //文字表示終了待ち
+            yield return new WaitUntil(() => !isTextCoroutineRunning);
+            //もし戦闘が終わっているのならループ終了
+            if (isEnd) break;
+
+            //遅いほうに攻撃させ、早いほうに防御させる
+            //バトル結果の文字列と、終了のフラグを受け取る
+            (battleStr, isEnd) = Direct(battlers[1], battlers[0]);
+            //文字を画面に出力
+            isTextCoroutineRunning = true;
+            battleStrArray = battleStr.ToArray();
+            StartCoroutine(showTextFiled.ShowStorys(battleStrArray, JugdeIsCoroutineFinish,text));
+            //文字表示終了待ち
+            yield return new WaitUntil(() => !isTextCoroutineRunning);
+            //もし戦闘が終わっているのならループ終了
+            if (isEnd) break;
+        }
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.A));
+        Hide();
+    }
+
+
+    void Hide()
+    {
+        battleCanvas.SetActive(false);
+        Debug.Log("終了");
+    }
+
+    void JugdeIsCoroutineFinish(bool finish)
+    {
+        if (finish)
+        {
+            isTextCoroutineRunning = false;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     public void Test()
     {
         SetStatus();
@@ -94,7 +186,7 @@ public class InBattle : MonoBehaviour
             returnList.Add($"{winner.charactorName}の勝利！");
             winner.level++;
             returnList.Add($"{winner.charactorName}はレベルが1上がった！");
-            returnList.Add($"{winner.charactorName}は報奨金として{UnityEngine.Random.Range(100,1000)}円もらった！");
+            returnList.Add($"{winner.charactorName}は報奨金として{UnityEngine.Random.Range(100, 1000)}円もらった！");
         }
         if (isEnd && attacker is Enemy)
         {
@@ -149,89 +241,6 @@ public class InBattle : MonoBehaviour
 
         return ratio;
     }
-
-
-
-
-
-    private void Start()
-    {
-        OnBattleStart();
-    }
-
-    public void OnBattleStart()
-    {
-        var testr = new string[]{ "敵が現れた！"};
-        StartCoroutine(showTextFiled.ShowStorys(testr, null, text));
-
-        SetStatus();
-        Sort();
-
-        buttons.SetActive(true);
-    }
-
-    public void OnAttackButtonsClicked(GameObject clicked)
-    {
-        //if (clicked.CompareTag("nomal"))
-        //{
-
-        //}
-        //else if (clicked.CompareTag("magic"))
-        //{
-
-        //}
-        //攻撃する・防御する　をやる
-        //どちらかが倒れるまで繰り返す
-        StartCoroutine(Fighting());
-    }
-
-    public IEnumerator Fighting()
-    {
-        while (true)
-        {
-            //早いほうに攻撃させ、遅いほうに防御させる
-            //バトル結果の文字列と、終了のフラグを受け取る
-            (var battleStr, var isEnd) = Direct(battlers[0], battlers[1]);
-            //文字を画面に出力
-            isTextCoroutineRunning = true;
-            var battleStrArray = battleStr.ToArray();
-            StartCoroutine(showTextFiled.ShowStorys(battleStrArray, JugdeIsCoroutineFinish,text));
-            //文字表示終了待ち
-            yield return new WaitUntil(() => !isTextCoroutineRunning);
-            //もし戦闘が終わっているのならループ終了
-            if (isEnd) break;
-
-            //遅いほうに攻撃させ、早いほうに防御させる
-            //バトル結果の文字列と、終了のフラグを受け取る
-            (battleStr, isEnd) = Direct(battlers[1], battlers[0]);
-            //文字を画面に出力
-            isTextCoroutineRunning = true;
-            battleStrArray = battleStr.ToArray();
-            StartCoroutine(showTextFiled.ShowStorys(battleStrArray, JugdeIsCoroutineFinish,text));
-            //文字表示終了待ち
-            yield return new WaitUntil(() => !isTextCoroutineRunning);
-            //もし戦闘が終わっているのならループ終了
-            if (isEnd) break;
-        }
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        Hide();
-    }
-
-
-    void Hide()
-    {
-        battleCanvas.SetActive(false);
-        Debug.Log("終了");
-    }
-
-    void JugdeIsCoroutineFinish(bool finish)
-    {
-        if (finish)
-        {
-            isTextCoroutineRunning = false;
-        }
-    }
-
 
 
 
