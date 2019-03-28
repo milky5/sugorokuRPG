@@ -22,12 +22,17 @@ public class Enemy : Charactor, IBattleable
         return "敵の攻撃！";
     }
 
-    public string[] BeDamaged(int damagePoint)
+    public (List<string>, bool) BeDamaged(int damagePoint)
     {
         var returnList = new List<string>();
         returnList.Add($"敵に{damagePoint}のダメージ");
         hp -= damagePoint;
         returnList.Add($"敵のHPが{hp}になった。");
-        return returnList.ToArray();
+        if (hp <= 0)
+        {
+            returnList.Add($"敵は倒れた");
+            return (returnList, true);
+        }
+        return (returnList, false);
     }
 }

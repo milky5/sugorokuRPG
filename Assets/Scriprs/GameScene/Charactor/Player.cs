@@ -7,7 +7,7 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
     //public string playerName;
     string haveitem;
     List<ItemList> items;
-    int money;
+    public int money;
 
     public bool isActive;
     public int remainMass { get; set; }
@@ -47,13 +47,18 @@ public class Player : Charactor, IRollable, IMoveable, IBattleable
         return $"{charactorName}の攻撃";
     }
 
-    public string[] BeDamaged(int damagePoint)
+    public (List<string>, bool) BeDamaged(int damagePoint)
     {
         var returnList = new List<string>();
         returnList.Add($"{charactorName}に{damagePoint}のダメージ");
         hp -= damagePoint;
         returnList.Add($"{charactorName}のHPが{hp}になった。");
-        return returnList.ToArray();
+        if (hp <= 0)
+        {
+            returnList.Add($"{charactorName}は倒れた");
+            return (returnList, true);
+        }
+        return (returnList, false);
     }
 
     public void Move()
