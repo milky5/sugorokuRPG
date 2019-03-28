@@ -48,12 +48,14 @@ public class InBattle : MonoBehaviour
         //攻撃する・防御する　をやる
         //どちらかが倒れるまで繰り返す
         StartCoroutine(Fighting());
+        Debug.Log("ボタンがクリックされた");
     }
 
     public IEnumerator Fighting()
     {
         while (true)
         {
+            Debug.Log("コルーチン開始");
             //早いほうに攻撃させ、遅いほうに防御させる
             //バトル結果の文字列と、終了のフラグを受け取る
             (var battleStr, var isEnd) = Direct(battlers[0], battlers[1]);
@@ -78,7 +80,6 @@ public class InBattle : MonoBehaviour
             //もし戦闘が終わっているのならループ終了
             if (isEnd) break;
         }
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.A));
         Hide();
     }
 

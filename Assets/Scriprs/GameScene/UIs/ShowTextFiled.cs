@@ -19,8 +19,13 @@ public class ShowTextFiled : MonoBehaviour
         //文字列を一行ずつ表示
         foreach (var str in strs)
         {
+            if (row == 0)
+            {
+                text.text = null;
+            }
             //3の倍数+1の要素だった場合はTextBoxからあふれてしまう
-            if (row % 3 == 0)
+            if (row % 3 == 0 && row != 0)
+                //if (row % 3 == 0)
             {
                 //読み終わってクリックされるのを待つ
                 yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
